@@ -1,0 +1,916 @@
+options:
+  parameters:
+    author: ''
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: hackrf
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: HackRF Test
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: bw
+  id: variable
+  parameters:
+    comment: ''
+    value: 300e3
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [608, 28.0]
+    rotation: 0
+    state: disabled
+- name: center_freq
+  id: variable
+  parameters:
+    comment: ''
+    value: 51e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [296, 20.0]
+    rotation: 0
+    state: disabled
+- name: decimation
+  id: variable
+  parameters:
+    comment: ''
+    value: '20'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [712, 28.0]
+    rotation: 0
+    state: disabled
+- name: fft_len
+  id: variable
+  parameters:
+    comment: ''
+    value: '1024'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [104, 268.0]
+    rotation: 0
+    state: true
+- name: ncarrier
+  id: variable
+  parameters:
+    comment: ''
+    value: 720*2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [224, 436.0]
+    rotation: 0
+    state: enabled
+- name: occupied_carriers
+  id: variable
+  parameters:
+    comment: ''
+    value: '[-419, -418, -417, -416, -415, -414, -412, -411, -410, -409, -408, -407,
+      -405, -404, -403, -402, -401, -400, -398, -397, -396, -395, -394, -393, -391,
+      -390, -389, -388, -387, -386, -384, -383, -382, -381, -380, -379, -377, -376,
+      -375, -374, -373, -372, -370, -369, -368, -367, -366, -365, -363, -362, -361,
+      -360, -359, -358, -356, -355, -354, -353, -352, -351, -349, -348, -347, -346,
+      -345, -344, -342, -341, -340, -339, -338, -337, -335, -334, -333, -332, -331,
+      -330, -328, -327, -326, -325, -324, -323, -321, -320, -319, -318, -317, -316,
+      -314, -313, -312, -311, -310, -309, -307, -306, -305, -304, -303, -302, -300,
+      -299, -298, -297, -296, -295, -293, -292, -291, -290, -289, -288, -286, -285,
+      -284, -283, -282, -281, -279, -278, -277, -276, -275, -274, -272, -271, -270,
+      -269, -268, -267, -265, -264, -263, -262, -261, -260, -258, -257, -256, -255,
+      -254, -253, -251, -250, -249, -248, -247, -246, -244, -243, -242, -241, -240,
+      -239, -237, -236, -235, -234, -233, -232, -230, -229, -228, -227, -226, -225,
+      -223, -222, -221, -220, -219, -218, -216, -215, -214, -213, -212, -211, -209,
+      -208, -207, -206, -205, -204, -202, -201, -200, -199, -198, -197, -195, -194,
+      -193, -192, -191, -190, -188, -187, -186, -185, -184, -183, -181, -180, -179,
+      -178, -177, -176, -174, -173, -172, -171, -170, -169, -167, -166, -165, -164,
+      -163, -162, -160, -159, -158, -157, -156, -155, -153, -152, -151, -150, -149,
+      -148, -146, -145, -144, -143, -142, -141, -139, -138, -137, -136, -135, -134,
+      -133, -131, -130, -129, -128, -127, -126, -124, -123, -122, -121, -120, -119,
+      -117, -116, -115, -114, -113, -112, -110, -109, -108, -107, -106, -105, -103,
+      -102, -101, -100, -99, -98, -96, -95, -94, -93, -92, -91, -89, -88, -87, -86,
+      -85, -84, -82, -81, -80, -79, -78, -77, -75, -74, -73, -72, -71, -70, -68, -67,
+      -66, -65, -64, -63, -61, -60, -59, -58, -57, -56, -54, -53, -52, -51, -50, -49,
+      -47, -46, -45, -44, -43, -42, -40, -39, -38, -37, -36, -35, -33, -32, -31, -30,
+      -29, -28, -26, -25, -24, -23, -22, -21, -19, -18, -17, -16, -15, -14, -12, -11,
+      -10, -9, -8, -7, -5, -4, -3, -2, -1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14,
+      16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 27, 28, 30, 31, 32, 33, 34, 35, 37,
+      38, 39, 40, 41, 42, 44, 45, 46, 47, 48, 49, 51, 52, 53, 54, 55, 56, 58, 59,
+      60, 61, 62, 63, 65, 66, 67, 68, 69, 70, 72, 73, 74, 75, 76, 77, 79, 80, 81,
+      82, 83, 84, 86, 87, 88, 89, 90, 91, 93, 94, 95, 96, 97, 98, 100, 101, 102, 103,
+      104, 105, 107, 108, 109, 110, 111, 112, 114, 115, 116, 117, 118, 119, 121, 122,
+      123, 124, 125, 126, 128, 129, 130, 131, 132, 133, 135, 136, 137, 138, 139, 140,
+      142, 143, 144, 145, 146, 147, 149, 150, 151, 152, 153, 154, 156, 157, 158, 159,
+      160, 161, 163, 164, 165, 166, 167, 168, 170, 171, 172, 173, 174, 175, 177, 178,
+      179, 180, 181, 182, 184, 185, 186, 187, 188, 189, 191, 192, 193, 194, 195, 196,
+      198, 199, 200, 201, 202, 203, 205, 206, 207, 208, 209, 210, 212, 213, 214, 215,
+      216, 217, 219, 220, 221, 222, 223, 224, 226, 227, 228, 229, 230, 231, 233, 234,
+      235, 236, 237, 238, 240, 241, 242, 243, 244, 245, 247, 248, 249, 250, 251, 252,
+      254, 255, 256, 257, 258, 259, 261, 262, 263, 264, 265, 266, 268, 269, 270, 271,
+      272, 273, 275, 276, 277, 278, 279, 280, 282, 283, 284, 285, 286, 287, 289, 290,
+      291, 292, 293, 294, 296, 297, 298, 299, 300, 301, 303, 304, 305, 306, 307, 308,
+      310, 311, 312, 313, 314, 315, 317, 318, 319, 320, 321, 322, 324, 325, 326, 327,
+      328, 329, 331, 332, 333, 334, 335, 336, 338, 339, 340, 341, 342, 343, 345, 346,
+      347, 348, 349, 350, 352, 353, 354, 355, 356, 357, 359, 360, 361, 362, 363, 364,
+      366, 367, 368, 369, 370, 371, 373, 374, 375, 376, 377, 378, 380, 381, 382, 383,
+      384, 385, 387, 388, 389, 390, 391, 392, 394, 395, 396, 397, 398, 399, 401, 402,
+      403, 404, 405, 406, 408, 409, 410, 411, 412, 413, 415, 416, 417, 418, 419,420]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [32, 908.0]
+    rotation: 0
+    state: true
+- name: occupied_carriers_e
+  id: variable
+  parameters:
+    comment: ''
+    value: '[list(range(-(int)(ncarrier/2),0)) + list(range(1,(int)(ncarrier/2+1)))]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [256, 908.0]
+    rotation: 0
+    state: true
+- name: pilot_carriers
+  id: variable
+  parameters:
+    comment: ''
+    value: ((-420, -413, -406, -399, -392, -385, -378, -371, -364, -357, -350, -343,
+      -336, -329, -322, -315, -308, -301, -294, -287, -280, -273, -266, -259, -252,
+      -245, -238, -231, -224, -217, -210, -203, -196, -189, -182, -175, -168, -161,
+      -154, -147, -140, -132, -125, -118, -111, -104, -97, -90, -83, -76, -69, -62,
+      -55, -48, -41, -34, -27, -20, -13, -6, 1, 8, 15, 22, 29, 36, 43, 50, 57, 64,
+      71, 78, 85, 92, 99, 106, 113, 120, 127, 134, 141, 148, 155, 162, 169, 176, 183,
+      190, 197, 204, 211, 218, 225, 232, 239, 246, 253, 260, 267, 274, 281, 288, 295,
+      302, 309, 316, 323, 330, 337, 344, 351, 358, 365, 372, 379, 386, 393, 400, 407,
+      414),)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [32, 988.0]
+    rotation: 0
+    state: true
+- name: pilot_carriers_e
+  id: variable
+  parameters:
+    comment: ''
+    value: ((-(ncarrier+1),(ncarrier+1)),)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [256, 988.0]
+    rotation: 0
+    state: true
+- name: pilot_symbols
+  id: variable
+  parameters:
+    comment: ''
+    value: ((1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1,
+      1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1,
+      1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1,
+      1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1,
+      1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1,
+      1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1),)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [32, 844.0]
+    rotation: 0
+    state: true
+- name: pilot_symbols_e
+  id: variable
+  parameters:
+    comment: ''
+    value: ((1,-1),)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [256, 844.0]
+    rotation: 0
+    state: true
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: 2.285e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 12]
+    rotation: 0
+    state: enabled
+- name: sdr_center_freq
+  id: variable
+  parameters:
+    comment: ''
+    value: 50e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [432, 28.0]
+    rotation: 0
+    state: disabled
+- name: sync_word
+  id: variable
+  parameters:
+    comment: ''
+    value: '[0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0,
+      1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0,
+      0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0,
+      0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356,
+      0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, 1.41421356, 0.0, 0.0, 0.0, -1.41421356,
+      0.0, 0.0, 0.0, -1.41421356, 0.0, 0.0, 0.0, 1.41421356]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [216, 1088.0]
+    rotation: 0
+    state: true
+- name: blocks_message_debug_0
+  id: blocks_message_debug
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [328, 152.0]
+    rotation: 0
+    state: disabled
+- name: blocks_probe_rate_0
+  id: blocks_probe_rate
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha: '0.15'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    mintime: '500.0'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [40, 140.0]
+    rotation: 0
+    state: disabled
+- name: blocks_repack_bits_bb_0
+  id: blocks_repack_bits_bb
+  parameters:
+    affinity: ''
+    alias: ''
+    align_output: 'False'
+    comment: ''
+    endianness: gr.GR_LSB_FIRST
+    k: '1'
+    l: '2'
+    len_tag_key: '""'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [680, 380.0]
+    rotation: 0
+    state: true
+- name: blocks_stream_to_tagged_stream_0
+  id: blocks_stream_to_tagged_stream
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    len_tag_key: '"packet_len"'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    packet_len: ncarrier
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [264, 540.0]
+    rotation: 180
+    state: true
+- name: blocks_tag_gate_0
+  id: blocks_tag_gate
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    propagate_tags: 'False'
+    single_key: '""'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 836.0]
+    rotation: 0
+    state: true
+- name: blocks_throttle_0
+  id: blocks_throttle
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [848, 1008.0]
+    rotation: 0
+    state: disabled
+- name: digital_chunks_to_symbols_xx_0
+  id: digital_chunks_to_symbols_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    dimension: '1'
+    in_type: byte
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    out_type: complex
+    symbol_table: '[-1-1j, -1+1j, 1-1j, 1+1j]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [616, 552.0]
+    rotation: 180
+    state: true
+- name: digital_glfsr_source_x_0
+  id: digital_glfsr_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    degree: '16'
+    mask: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    repeat: 'True'
+    seed: '1'
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [488, 364.0]
+    rotation: 0
+    state: true
+- name: digital_ofdm_carrier_allocator_cvc_0
+  id: digital_ofdm_carrier_allocator_cvc
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    fft_len: fft_len
+    len_tag_key: '"packet_len"'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    occupied_carriers: '[occupied_carriers,occupied_carriers]'
+    output_is_shifted: 'True'
+    pilot_carriers: pilot_carriers
+    pilot_symbols: pilot_symbols
+    sync_words: '[sync_word]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [256, 660.0]
+    rotation: 0
+    state: true
+- name: digital_ofdm_cyclic_prefixer_0
+  id: digital_ofdm_cyclic_prefixer
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    cp_len: (int)(fft_len/4)
+    input_size: fft_len
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    rolloff: '0'
+    tagname: '"packet_len"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [816, 724.0]
+    rotation: 0
+    state: true
+- name: fft_vxx_0
+  id: fft_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    fft_size: fft_len
+    forward: 'False'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nthreads: '1'
+    shift: 'True'
+    type: complex
+    window: ()
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [560, 724.0]
+    rotation: 0
+    state: true
+- name: osmosdr_sink_0
+  id: osmosdr_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    ant0: ''
+    ant1: ''
+    ant10: ''
+    ant11: ''
+    ant12: ''
+    ant13: ''
+    ant14: ''
+    ant15: ''
+    ant16: ''
+    ant17: ''
+    ant18: ''
+    ant19: ''
+    ant2: ''
+    ant20: ''
+    ant21: ''
+    ant22: ''
+    ant23: ''
+    ant24: ''
+    ant25: ''
+    ant26: ''
+    ant27: ''
+    ant28: ''
+    ant29: ''
+    ant3: ''
+    ant30: ''
+    ant31: ''
+    ant4: ''
+    ant5: ''
+    ant6: ''
+    ant7: ''
+    ant8: ''
+    ant9: ''
+    args: '""'
+    bb_gain0: '20'
+    bb_gain1: '20'
+    bb_gain10: '20'
+    bb_gain11: '20'
+    bb_gain12: '20'
+    bb_gain13: '20'
+    bb_gain14: '20'
+    bb_gain15: '20'
+    bb_gain16: '20'
+    bb_gain17: '20'
+    bb_gain18: '20'
+    bb_gain19: '20'
+    bb_gain2: '20'
+    bb_gain20: '20'
+    bb_gain21: '20'
+    bb_gain22: '20'
+    bb_gain23: '20'
+    bb_gain24: '20'
+    bb_gain25: '20'
+    bb_gain26: '20'
+    bb_gain27: '20'
+    bb_gain28: '20'
+    bb_gain29: '20'
+    bb_gain3: '20'
+    bb_gain30: '20'
+    bb_gain31: '20'
+    bb_gain4: '20'
+    bb_gain5: '20'
+    bb_gain6: '20'
+    bb_gain7: '20'
+    bb_gain8: '20'
+    bb_gain9: '20'
+    bw0: '0'
+    bw1: '0'
+    bw10: '0'
+    bw11: '0'
+    bw12: '0'
+    bw13: '0'
+    bw14: '0'
+    bw15: '0'
+    bw16: '0'
+    bw17: '0'
+    bw18: '0'
+    bw19: '0'
+    bw2: '0'
+    bw20: '0'
+    bw21: '0'
+    bw22: '0'
+    bw23: '0'
+    bw24: '0'
+    bw25: '0'
+    bw26: '0'
+    bw27: '0'
+    bw28: '0'
+    bw29: '0'
+    bw3: '0'
+    bw30: '0'
+    bw31: '0'
+    bw4: '0'
+    bw5: '0'
+    bw6: '0'
+    bw7: '0'
+    bw8: '0'
+    bw9: '0'
+    clock_source0: ''
+    clock_source1: ''
+    clock_source2: ''
+    clock_source3: ''
+    clock_source4: ''
+    clock_source5: ''
+    clock_source6: ''
+    clock_source7: ''
+    comment: ''
+    corr0: '0'
+    corr1: '0'
+    corr10: '0'
+    corr11: '0'
+    corr12: '0'
+    corr13: '0'
+    corr14: '0'
+    corr15: '0'
+    corr16: '0'
+    corr17: '0'
+    corr18: '0'
+    corr19: '0'
+    corr2: '0'
+    corr20: '0'
+    corr21: '0'
+    corr22: '0'
+    corr23: '0'
+    corr24: '0'
+    corr25: '0'
+    corr26: '0'
+    corr27: '0'
+    corr28: '0'
+    corr29: '0'
+    corr3: '0'
+    corr30: '0'
+    corr31: '0'
+    corr4: '0'
+    corr5: '0'
+    corr6: '0'
+    corr7: '0'
+    corr8: '0'
+    corr9: '0'
+    freq0: 52e6
+    freq1: 100e6
+    freq10: 100e6
+    freq11: 100e6
+    freq12: 100e6
+    freq13: 100e6
+    freq14: 100e6
+    freq15: 100e6
+    freq16: 100e6
+    freq17: 100e6
+    freq18: 100e6
+    freq19: 100e6
+    freq2: 100e6
+    freq20: 100e6
+    freq21: 100e6
+    freq22: 100e6
+    freq23: 100e6
+    freq24: 100e6
+    freq25: 100e6
+    freq26: 100e6
+    freq27: 100e6
+    freq28: 100e6
+    freq29: 100e6
+    freq3: 100e6
+    freq30: 100e6
+    freq31: 100e6
+    freq4: 100e6
+    freq5: 100e6
+    freq6: 100e6
+    freq7: 100e6
+    freq8: 100e6
+    freq9: 100e6
+    gain0: '10'
+    gain1: '10'
+    gain10: '10'
+    gain11: '10'
+    gain12: '10'
+    gain13: '10'
+    gain14: '10'
+    gain15: '10'
+    gain16: '10'
+    gain17: '10'
+    gain18: '10'
+    gain19: '10'
+    gain2: '10'
+    gain20: '10'
+    gain21: '10'
+    gain22: '10'
+    gain23: '10'
+    gain24: '10'
+    gain25: '10'
+    gain26: '10'
+    gain27: '10'
+    gain28: '10'
+    gain29: '10'
+    gain3: '10'
+    gain30: '10'
+    gain31: '10'
+    gain4: '10'
+    gain5: '10'
+    gain6: '10'
+    gain7: '10'
+    gain8: '10'
+    gain9: '10'
+    if_gain0: '20'
+    if_gain1: '20'
+    if_gain10: '20'
+    if_gain11: '20'
+    if_gain12: '20'
+    if_gain13: '20'
+    if_gain14: '20'
+    if_gain15: '20'
+    if_gain16: '20'
+    if_gain17: '20'
+    if_gain18: '20'
+    if_gain19: '20'
+    if_gain2: '20'
+    if_gain20: '20'
+    if_gain21: '20'
+    if_gain22: '20'
+    if_gain23: '20'
+    if_gain24: '20'
+    if_gain25: '20'
+    if_gain26: '20'
+    if_gain27: '20'
+    if_gain28: '20'
+    if_gain29: '20'
+    if_gain3: '20'
+    if_gain30: '20'
+    if_gain31: '20'
+    if_gain4: '20'
+    if_gain5: '20'
+    if_gain6: '20'
+    if_gain7: '20'
+    if_gain8: '20'
+    if_gain9: '20'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nchan: '1'
+    num_mboards: '1'
+    sample_rate: samp_rate
+    sync: sync
+    time_source0: ''
+    time_source1: ''
+    time_source2: ''
+    time_source3: ''
+    time_source4: ''
+    time_source5: ''
+    time_source6: ''
+    time_source7: ''
+    type: fc32
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1248, 684.0]
+    rotation: 0
+    state: enabled
+- name: qtgui_freq_sink_x_1
+  id: qtgui_freq_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'False'
+    average: '1.0'
+    axislabels: 'True'
+    bw: samp_rate
+    color1: '"blue"'
+    color10: '"dark blue"'
+    color2: '"red"'
+    color3: '"green"'
+    color4: '"black"'
+    color5: '"cyan"'
+    color6: '"magenta"'
+    color7: '"yellow"'
+    color8: '"dark red"'
+    color9: '"dark green"'
+    comment: ''
+    ctrlpanel: 'False'
+    fc: '0'
+    fftsize: '1024'
+    freqhalf: 'True'
+    grid: 'False'
+    gui_hint: ''
+    label: Relative Gain
+    label1: ''
+    label10: ''''''
+    label2: ''''''
+    label3: ''''''
+    label4: ''''''
+    label5: ''''''
+    label6: ''''''
+    label7: ''''''
+    label8: ''''''
+    label9: ''''''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    nconnections: '1'
+    showports: 'False'
+    tr_chan: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_tag: '""'
+    type: complex
+    units: dB
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+    ymax: '10'
+    ymin: '-70'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1248, 872.0]
+    rotation: 0
+    state: enabled
+
+connections:
+- [blocks_probe_rate_0, rate, blocks_message_debug_0, print]
+- [blocks_repack_bits_bb_0, '0', digital_chunks_to_symbols_xx_0, '0']
+- [blocks_stream_to_tagged_stream_0, '0', digital_ofdm_carrier_allocator_cvc_0, '0']
+- [blocks_tag_gate_0, '0', osmosdr_sink_0, '0']
+- [blocks_tag_gate_0, '0', qtgui_freq_sink_x_1, '0']
+- [blocks_throttle_0, '0', blocks_tag_gate_0, '0']
+- [digital_chunks_to_symbols_xx_0, '0', blocks_stream_to_tagged_stream_0, '0']
+- [digital_glfsr_source_x_0, '0', blocks_repack_bits_bb_0, '0']
+- [digital_ofdm_carrier_allocator_cvc_0, '0', fft_vxx_0, '0']
+- [digital_ofdm_cyclic_prefixer_0, '0', blocks_tag_gate_0, '0']
+- [digital_ofdm_cyclic_prefixer_0, '0', blocks_throttle_0, '0']
+- [fft_vxx_0, '0', digital_ofdm_cyclic_prefixer_0, '0']
+
+metadata:
+  file_format: 1
