@@ -58,8 +58,8 @@ grid on
 grid minor on
 
 
-s = 4000;
-e = 6000;
+s = 1;
+e = length(s_hat);
 
 t_l = 10700;
 t_h = 11000;
@@ -84,6 +84,9 @@ while i < e
   endif
   i += 1;
 endwhile
+
+s=frame_start-1500;
+e=frame_start+1024+1500;
 
 
 
