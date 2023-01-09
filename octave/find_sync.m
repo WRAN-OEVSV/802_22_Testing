@@ -61,8 +61,11 @@ grid minor on
 s = 1;
 e = length(s_hat);
 
-t_l = 10700;
-t_h = 11000;
+#t_l = 10700;
+#t_h = 11000;
+
+t_l = max(abs(s_hat))-1500;
+t_h = t_l+300;
 
 thresh = [];
 
@@ -76,11 +79,14 @@ frame_start = 0;
 while i < e
   if((abs(s_hat(i)) > t_l) && (abs(s_hat(i)) < t_h) )
     i
-    frame_start = round(i - (-1*((arg(s_hat(i))/(2*pi))*256-127)) - 256)
-    thresh(i) = abs(s_hat(i));
-    thresh(frame_start) = abs(s_hat(i));
-    thresh(frame_start+1024) = abs(s_hat(i));
-    i += e
+    # are we on the up slope?
+    if(abs(s_hat(i+10)) > abs(s_hat(i)))
+       frame_start = round(i - (-1*((arg(s_hat(i))/(2*pi))*256-127)) - 256)
+       thresh(i) = abs(s_hat(i));
+       thresh(frame_start) = abs(s_hat(i));
+       thresh(frame_start+1024) = abs(s_hat(i));
+       i += e
+    endif
   endif
   i += 1;
 endwhile
