@@ -84,7 +84,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 720*2
+    value: '720'
   states:
     bus_sink: false
     bus_source: false
@@ -342,7 +342,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [216, 1088.0]
+    coordinate: [440, 916.0]
     rotation: 0
     state: true
 - name: blocks_message_debug_0
@@ -451,7 +451,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [848, 1008.0]
+    coordinate: [720, 1060.0]
     rotation: 0
     state: disabled
 - name: digital_chunks_to_symbols_xx_0
