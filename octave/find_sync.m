@@ -73,7 +73,7 @@ for i = 1:e
  thresh(end+1) = 0;
 endfor
 
-i = s;
+i = s+2000;
 frame_start = 0;
 
 while i < e
